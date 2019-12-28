@@ -9,6 +9,9 @@ export class RentalList extends React.Component {
         this.state = {
             rentals: [1,2,3]
         }
+
+        // this.addRentals = this.addRentals.bind(this);
+
     }
 
     renderRentals() {
@@ -19,6 +22,18 @@ export class RentalList extends React.Component {
         })
     }
 
+    // addRentals() {
+    //
+    //     const rentals = this.state.rentals;
+    //
+    //     rentals.push(1);
+    //
+    //     this.setState({
+    //         rentals
+    //     });
+    //
+    // }
+
     render() {
         return (
             <section id='rentalListing'>
@@ -28,6 +43,12 @@ export class RentalList extends React.Component {
                     {this.renderRentals()}
 
                 </div>
+                {/*<button onClick={this.addRentals}>Add Rental</button>*/}
+                {
+                    /* @TODO USING ARROW FUNC, without constructor binding
+                    <button onClick={() => {this.addRentals()}}>Add Rental</button>
+                    */
+                }
             </section>
         )
     }
