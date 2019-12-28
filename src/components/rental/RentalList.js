@@ -1,38 +1,16 @@
 import React from 'react';
 import {RentalCard} from "./RentalCard";
+import { connect } from 'react-redux';
 
-export class RentalList extends React.Component {
-
-    constructor() {
-        super();
-
-        this.state = {
-            rentals: [1,2,3]
-        }
-
-        // this.addRentals = this.addRentals.bind(this);
-
-    }
+class RentalList extends React.Component {
 
     renderRentals() {
-        return this.state.rentals.map((rental) => {
+        return this.props.rentals.map((rental) => {
             return (
-                <RentalCard key={rental.toString()}/>
+                <RentalCard key={rental.id} rental={rental} />
             )
         })
     }
-
-    // addRentals() {
-    //
-    //     const rentals = this.state.rentals;
-    //
-    //     rentals.push(1);
-    //
-    //     this.setState({
-    //         rentals
-    //     });
-    //
-    // }
 
     render() {
         return (
@@ -43,13 +21,17 @@ export class RentalList extends React.Component {
                     {this.renderRentals()}
 
                 </div>
-                {/*<button onClick={this.addRentals}>Add Rental</button>*/}
-                {
-                    /* @TODO USING ARROW FUNC, without constructor binding
-                    <button onClick={() => {this.addRentals()}}>Add Rental</button>
-                    */
-                }
             </section>
         )
     }
 }
+
+function mapStateProps(state) {
+
+    return {
+        rentals: state.rentals
+    }
+
+}
+
+export default connect(mapStateProps)(RentalList)
