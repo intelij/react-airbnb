@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
-import * as redux from 'redux';
 import { Provider } from 'react-redux';
 
 import { Header } from './shared/Header';
 import RentalList from './components/rental/RentalList';
 import {RentalDetails} from './components/rental/RentalDetails';
+import { init } from './reducers';
 
 import './App.css';
-import {rentalReducer} from "./reducers/rental-reducer";
+
+const store = init();
 
 class App extends Component {
 
     render() {
 
-        const store = redux.createStore(() => {
-            return {
-                rentals: []
-            }
-        })
         return (
             <Provider store={store}>
                 <BrowserRouter>
